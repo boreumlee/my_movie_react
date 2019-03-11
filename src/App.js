@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   _callApi = () => {
-    return fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
+    return fetch('https://yts.am/api/v2/list_movies.json?sort_by=download_count')
     .then(response => response.json())
     //밑에 then은 response를 json으로 바꾸고 그러고 then
     .then(json => json.data.movies)
@@ -48,9 +48,10 @@ class App extends Component {
   }
 
   render() {
+    const {movies} = this.state;
     return (
-      <div className="App">
-        {this.state.movies ? this._renderMovies() : 'Loading'}
+      <div className={movies ? "App" : "App--loading"}>
+        {movies ? this._renderMovies() : 'Loading'}
       </div>
     );
   }

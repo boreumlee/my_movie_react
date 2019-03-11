@@ -6,23 +6,23 @@ import LinesEllipsis from 'react-lines-ellipsis';
 function Movie({title, poster, genres, synopsis}){
     return(
         <div>
-            <div className="Movie__Col">
+            <div className="Movie__Column">
                 <MoviePoster poster={poster} alt={title}/>
             </div>
-            <div className="Movie__Col">
+            <div className="Movie__Column">
                 <h1>{title}</h1>
                 <div className="Movie__Genres">
                     {genres.map((genre, index) => <MovieGenre genre={genre} key={index}/>)}
                 </div>
-                <p className="Movie__Syno">
+                <div className="Movie__Synopsis">
                     <LinesEllipsis
                         text={synopsis}
                         maxLine='3'
                         ellipsis='...'
                         trimRight
                         basedOn='letters'
-                    />
-                </p>
+                    />  
+                </div>
             </div>
         </div>
     );
